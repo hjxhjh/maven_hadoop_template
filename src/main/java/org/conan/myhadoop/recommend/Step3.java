@@ -26,7 +26,6 @@ public class Step3 {
         private final static IntWritable k = new IntWritable();
         private final static Text v = new Text();
 
-        @Override
         public void map(LongWritable key, Text values, OutputCollector<IntWritable, Text> output, Reporter reporter) throws IOException {
             String[] tokens = Recommend.DELIMITER.split(values.toString());
             for (int i = 1; i < tokens.length; i++) {
@@ -71,7 +70,6 @@ public class Step3 {
         private final static Text k = new Text();
         private final static IntWritable v = new IntWritable();
 
-        @Override
         public void map(LongWritable key, Text values, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
             String[] tokens = Recommend.DELIMITER.split(values.toString());
             k.set(tokens[0]);

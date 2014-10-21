@@ -27,7 +27,6 @@ public class Step1 {
         private final static IntWritable k = new IntWritable();
         private final static Text v = new Text();
 
-        @Override
         public void map(Object key, Text value, OutputCollector<IntWritable, Text> output, Reporter reporter) throws IOException {
             String[] tokens = Recommend.DELIMITER.split(value.toString());
             int userID = Integer.parseInt(tokens[0]);
@@ -42,7 +41,6 @@ public class Step1 {
     public static class Step1_ToUserVectorReducer extends MapReduceBase implements Reducer<IntWritable, Text, IntWritable, Text> {
         private final static Text v = new Text();
 
-        @Override
         public void reduce(IntWritable key, Iterator<Text> values, OutputCollector<IntWritable, Text> output, Reporter reporter) throws IOException {
             StringBuilder sb = new StringBuilder();
             while (values.hasNext()) {

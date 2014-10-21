@@ -33,7 +33,6 @@ public class Step4 {
 
         private final static Map<Integer, List<Cooccurrence>> cooccurrenceMatrix = new HashMap<Integer, List<Cooccurrence>>();
 
-        @Override
         public void map(LongWritable key, Text values, OutputCollector<IntWritable, Text> output, Reporter reporter) throws IOException {
             String[] tokens = Recommend.DELIMITER.split(values.toString());
             
@@ -71,7 +70,6 @@ public class Step4 {
     public static class Step4_AggregateAndRecommendReducer extends MapReduceBase implements Reducer<IntWritable, Text, IntWritable, Text> {
         private final static Text v = new Text();
 
-        @Override
         public void reduce(IntWritable key, Iterator<Text> values, OutputCollector<IntWritable, Text> output, Reporter reporter) throws IOException {
             Map<String, Double> result = new HashMap<String, Double>();
             while (values.hasNext()) {
